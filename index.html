@@ -54,8 +54,18 @@
         </div>
       </a>
 
- <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-6">
+<!-- Mobile Menu (slide-in) -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+  <div class="p-6 flex flex-col h-full">
+    <!-- Close button -->
+    <button id="closeMenu" class="self-end mb-6 p-2 rounded hover:bg-slate-100">
+      <svg width="24" height="24" fill="#374151" viewBox="0 0 24 24">
+        <path d="M6 18L18 6M6 6l12 12" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Menu links -->
+    <nav class="flex flex-col space-y-4 text-lg">
       <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
       <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
       <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
@@ -63,28 +73,19 @@
       <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
       <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
     </nav>
-      
-<div class="flex items-center gap-3">
-        <a href="https://wa.me/919860191711?text=Hello%20Gitte%20Services%20-%20I%20need%20an%20insurance%20quote" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-3 py-2 rounded-full shadow hover:scale-105 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M20 3H4a1 1 0 0 0-1 1v14l4-2h13a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" fill="white"/></svg>
-          WhatsApp
-        </a>
-        <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-slate-100"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="#374151" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg></button>
-      </div>
+
+    <!-- Bottom WhatsApp CTA -->
+    <div class="mt-auto">
+      <a href="https://wa.me/919860191711?text=Hello%20Gitte%20Services%20-%20I%20need%20an%20insurance%20quote"
+         target="_blank"
+         class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full shadow hover:scale-105 transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="white"><path d="M20 3H4a1 1 0 0 0-1 1v14l4-2h13a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"/></svg>
+        WhatsApp Us
+      </a>
     </div>
-    
-  <!-- Mobile Menu (hidden by default) -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white shadow-inner">
-    <nav class="flex flex-col space-y-2 px-6 py-4">
-      <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
-      <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
-      <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
-      <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
-      <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
-      <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
-    </nav>
   </div>
-</header>
+</div>
+
 
   <!-- Hero -->
   <main id="home" class="pt-8">
@@ -499,10 +500,27 @@
     document.querySelector('.tabBtn[data-tab="life"]').click();
   </script>
   <script>
-  // Toggle Mobile Menu
-  document.getElementById("menuBtn").addEventListener("click", () => {
-    document.getElementById("mobileMenu").classList.toggle("hidden");
+
+    <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const closeMenu = document.getElementById("closeMenu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("translate-x-full");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.add("translate-x-full");
+  });
+
+  // Optional: close menu if clicking outside
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      mobileMenu.classList.add("translate-x-full");
+    }
   });
 </script>
+      
 </body>
 </html>
