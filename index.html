@@ -80,18 +80,17 @@
   </div>
 
   <!-- Mobile Menu (hidden by default) -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white shadow-inner">
-    <nav class="flex flex-col space-y-2 px-6 py-4">
-      <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
-      <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
-      <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
-      <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
-      <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
-      <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
-    </nav>
-  </div>
-</header>
-
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+  <nav class="flex flex-col space-y-4 px-6 py-6">
+    <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
+    <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
+    <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
+    <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
+    <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
+    <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
+  </nav>
+</div>
+  </header>
 
 
   <!-- Hero -->
@@ -508,12 +507,21 @@
   </script>
   <script>
 
- <script>
-  // Toggle Mobile Menu
-  document.getElementById("menuBtn").addEventListener("click", () => {
-    document.getElementById("mobileMenu").classList.toggle("hidden");
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuBtn.addEventListener("click", () => {
+    if (mobileMenu.classList.contains("translate-x-full")) {
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenu.classList.add("translate-x-0");
+    } else {
+      mobileMenu.classList.remove("translate-x-0");
+      mobileMenu.classList.add("translate-x-full");
+    }
   });
 </script>
+
       
 </body>
 </html>
