@@ -54,17 +54,44 @@
         </div>
       </a>
 
-      <!-- Mobile Menu (hidden by default) -->
-<div id="mobileMenu" class="hidden md:hidden bg-white shadow-inner">
-  <nav class="flex flex-col space-y-2 px-6 py-4">
-    <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
-    <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
-    <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
-    <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
-    <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
-    <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
-  </nav>
-</div>
+ <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
+      <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
+      <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
+      <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
+      <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
+      <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
+    </nav>
+
+    <!-- Right Side Buttons -->
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/919860191711?text=Hello%20Gitte%20Services%20-%20I%20need%20an%20insurance%20quote" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-3 py-2 rounded-full shadow hover:scale-105 transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M20 3H4a1 1 0 0 0-1 1v14l4-2h13a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" fill="white"/></svg>
+        WhatsApp
+      </a>
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-slate-100">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#374151" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white shadow-inner">
+    <nav class="flex flex-col space-y-2 px-6 py-4">
+      <a href="#home" class="text-slate-700 hover:text-blue-700">Home</a>
+      <a href="#products" class="text-slate-700 hover:text-blue-700">Products</a>
+      <a href="#calculators" class="text-slate-700 hover:text-blue-700">Calculators</a>
+      <a href="#faq" class="text-slate-700 hover:text-blue-700">FAQ</a>
+      <a href="#contact" class="text-slate-700 hover:text-blue-700">Contact</a>
+      <a href="https://pratikgitte.github.io/GitteCharity/" class="text-slate-700 hover:text-blue-700">GitteCharity</a>
+    </nav>
+  </div>
+</header>
+
 
 
       <div class="flex items-center gap-3">
@@ -495,6 +522,12 @@
 
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
+  });
+</script>
+  <script>
+  // Toggle Mobile Menu
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
   });
 </script>
 </body>
