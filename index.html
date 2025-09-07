@@ -106,32 +106,36 @@
   
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('menuBtn');   // FIXED here
+  const toggle = document.getElementById('menuBtn');
   const panel = document.getElementById('mobilePanel');
   const overlay = document.getElementById('menuOverlay');
   const closeBtn = document.getElementById('panelClose');
 
   const open = () => {
+    if (!panel || !overlay) return;
     panel.classList.remove('translate-x-full');
     panel.classList.add('translate-x-0');
     overlay.classList.remove('hidden');
   };
   const close = () => {
+    if (!panel || !overlay) return;
     panel.classList.remove('translate-x-0');
     panel.classList.add('translate-x-full');
     overlay.classList.add('hidden');
   };
 
-  toggle.addEventListener('click', open);
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', close);
+  if (toggle) toggle.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (overlay) overlay.addEventListener('click', close);
 
-  // Close when clicking a link inside panel
-  panel.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', close)
-  );
+  if (panel) {
+    panel.querySelectorAll('a').forEach(link =>
+      link.addEventListener('click', close)
+    );
+  }
 });
 </script>
+
 
 
 <!-- ========== END HEADER + MOBILE MENU ========== -->
